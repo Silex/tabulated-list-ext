@@ -48,8 +48,8 @@
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (setq cmd (char-after))
-      (tabulated-list-put-tag (if (eq cmd ?*) "" "*") t))))
+      (let ((cmd (char-after)))
+        (tabulated-list-put-tag (if (eq cmd ?*) "" "*") t)))))
 
 (defun tabulated-list-unmark-all ()
   "Unmark all."

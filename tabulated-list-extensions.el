@@ -32,17 +32,17 @@
 
 (require 'dash)
 
-(defun tabulated-list-mark (&optional count)
+(defun tle-mark (&optional count)
   "Mark the next COUNT lines (default 1)."
   (interactive "p")
   (--dotimes count (tabulated-list-put-tag "*" t)))
 
-(defun tabulated-list-unmark (&optional count)
+(defun tle-unmark (&optional count)
   "Unmark the next COUNT lines (default 1)."
   (interactive "p")
   (--dotimes count (tabulated-list-put-tag "" t)))
 
-(defun tabulated-list-toggle-marks ()
+(defun tle-toggle-marks ()
   "Toggle marks."
   (interactive)
   (save-excursion
@@ -51,7 +51,7 @@
       (let ((cmd (char-after)))
         (tabulated-list-put-tag (if (eq cmd ?*) "" "*") t)))))
 
-(defun tabulated-list-unmark-all ()
+(defun tle-unmark-all ()
   "Unmark all."
   (interactive)
   (save-excursion
@@ -59,16 +59,16 @@
     (while (not (eobp))
       (tabulated-list-put-tag "" t))))
 
-(defvar tabulated-list-extensions-mode-map
+(defvar tle-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map "m" 'tabulated-list-mark)
-    (define-key map "u" 'tabulated-list-unmark)
-    (define-key map "t" 'tabulated-list-toggle-marks)
-    (define-key map "U" 'tabulated-list-unmark-all)
+    (define-key map "m" 'tle-mark)
+    (define-key map "u" 'tle-unmark)
+    (define-key map "t" 'tle-toggle-marks)
+    (define-key map "U" 'tle-unmark-all)
     map)
-  "Keymap for `tabulated-list-extensions-mode'.")
+  "Keymap for `tle-mode'.")
 
-(define-derived-mode tabulated-list-extensions-mode tabulated-list-mode "Extended Tabulated List"
+(define-derived-mode tle-mode tabulated-list-mode "Extended Tabulated List"
   "Extended Tabulated List")
 
 (provide 'tabulated-list-extensions)

@@ -68,8 +68,14 @@
     map)
   "Keymap for `tle-mode'.")
 
-(define-derived-mode tle-mode tabulated-list-mode "Extended Tabulated List"
-  "Extended Tabulated List")
+(define-minor-mode tle-mode
+  "Toggle Tabulated List Extensions mode.
+With a prefix argument ARG, enable tle-mode if ARG is
+positive, and disable it otherwise. If called from Lisp, enable
+the mode if ARG is omitted or nil."
+  nil
+  " tle"
+  tle-mode-map)
 
 (provide 'tabulated-list-extensions)
 

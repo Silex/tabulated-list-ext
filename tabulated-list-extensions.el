@@ -1,7 +1,7 @@
-;;; tabulated-list-ext.el --- Extensions to tabulated-list-mode
+;;; tabulated-list-extensions.el --- Extensions to tabulated-list-mode
 
 ;; Author: Philippe Vaucher <philippe.vaucher@gmail.com>
-;; URL: https://github.com/Silex/tabulated-list-ext
+;; URL: https://github.com/Silex/tabulated-list-extensions
 ;; Keywords: tabulated-list, extension
 ;; Version: 0.1.0
 ;; Package-Requires: ((dash "1.5.0"))
@@ -59,18 +59,18 @@
     (while (not (eobp))
       (tabulated-list-put-tag "" t))))
 
-(defvar tabulated-list-ext-mode-map
+(defvar tabulated-list-extensions-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "m" 'tabulated-list-mark)
     (define-key map "u" 'tabulated-list-unmark)
     (define-key map "t" 'tabulated-list-toggle-marks)
     (define-key map "U" 'tabulated-list-unmark-all)
     map)
-  "Keymap for `tabulated-list-ext-mode'.")
+  "Keymap for `tabulated-list-extensions-mode'.")
 
-(define-derived-mode tabulated-list-ext-mode tabulated-list-mode "Extended Tabulated List"
+(define-derived-mode tabulated-list-extensions-mode tabulated-list-mode "Extended Tabulated List"
   "Extended Tabulated List")
 
-(provide 'tabulated-list-ext)
+(provide 'tabulated-list-extensions)
 
-;;; tabulated-list-ext.el ends here
+;;; tabulated-list-extensions.el ends here

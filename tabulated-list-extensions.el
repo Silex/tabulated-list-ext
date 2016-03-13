@@ -90,6 +90,28 @@
     (while (not (eobp))
       (tle-mark 1))))
 
+(defun tle-get-selection-ids ()
+  "Get the marked items ids."
+  (save-excursion
+    (goto-char (point-min))
+    (let ((selection ()))
+      (while (not (eobp))
+        (when (tle-selected-p)
+          (add-to-list 'selection (tabulated-list-get-id) t))
+        (forward-line))
+      selection)))
+
+(defun tle-get-selection-entries ()
+  "Get the marked items entries."
+  (save-excursion
+    (goto-char (point-min))
+    (let ((selection ()))
+      (while (not (eobp))
+        (when (tle-selected-p)
+          (add-to-list 'selection (tabulated-list-get-entry) t))
+        (forward-line))
+      selection)))
+
 (defvar tle-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "m" 'tle-mark)

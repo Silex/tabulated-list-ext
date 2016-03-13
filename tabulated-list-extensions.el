@@ -90,8 +90,8 @@
       (tle-toggle-mark)
       (forward-line))))
 
-(defun tle-get-selection-ids ()
-  "Get the marked items ids."
+(defun tle-selection-ids ()
+  "Get the marked items `tabulated-list-get-id' data."
   (save-excursion
     (goto-char (point-min))
     (let ((selection ()))
@@ -101,8 +101,8 @@
         (forward-line))
       selection)))
 
-(defun tle-get-selection-entries ()
-  "Get the marked items entries."
+(defun tle-selection-entries ()
+  "Get the marked items `tabulated-list-get-entry' data."
   (save-excursion
     (goto-char (point-min))
     (let ((selection ()))

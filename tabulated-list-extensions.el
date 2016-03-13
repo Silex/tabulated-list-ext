@@ -51,28 +51,18 @@
   (interactive "p")
   (--dotimes count (tabulated-list-put-tag tle-tag t)))
 
-(defun tle-unmark (&optional count)
-  "Unmark the next COUNT lines (default 1)."
-  (interactive "p")
-  (--dotimes count (tabulated-list-put-tag "" t)))
-
-(defun tle-toggle-mark ()
-  "Toggle mark for current row."
-  (interactive)
-  (save-excursion
-    (beginning-of-line)
-    (if (tle-selected-p)
-        (tle-unmark 1)
-      (tle-mark 1))))
-
-(defun tle-toggle-marks ()
-  "Toggle all marks."
+(defun tle-mark-all ()
+  "Mark all."
   (interactive)
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (tle-toggle-mark)
-      (forward-line))))
+      (tle-mark 1))))
+
+(defun tle-unmark (&optional count)
+  "Unmark the next COUNT lines (default 1)."
+  (interactive "p")
+  (--dotimes count (tabulated-list-put-tag "" t)))
 
 (defun tle-unmark-all ()
   "Unmark all."
@@ -82,13 +72,23 @@
     (while (not (eobp))
       (tle-unmark 1))))
 
-(defun tle-mark-all ()
-  "Mark all."
+(defun tle-toggle ()
+  "Toggle mark for current row."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (if (tle-selected-p)
+        (tle-unmark 1)
+      (tle-mark 1))))
+
+(defun tle-toggle-all ()
+  "Toggle all marks."
   (interactive)
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (tle-mark 1))))
+      (tle-toggle-mark)
+      (forward-line))))
 
 (defun tle-get-selection-ids ()
   "Get the marked items ids."

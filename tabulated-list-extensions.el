@@ -32,24 +32,47 @@
 
 (require 'dash)
 
+(defgroup tabulated-list-extensions nil
+  "Tabulated list extensions."
+  :group 'tabulated-list
+  :group 'convenience)
+
+(defcustom tle-tag "*"
+  "Default character used for marking."
+  :group 'tabulated-list-extensions
+  :type 'string)
+
+(defun tle-selected-p ()
+  "Return true if the current row is selected."
+  (string-equal tle-tag (buffer-substring (point) (+ (point) (string-width tle-tag)))))
+
 (defun tle-mark (&optional count)
   "Mark the next COUNT lines (default 1)."
   (interactive "p")
-  (--dotimes count (tabulated-list-put-tag "*" t)))
+  (--dotimes count (tabulated-list-put-tag tle-tag t)))
 
 (defun tle-unmark (&optional count)
   "Unmark the next COUNT lines (default 1)."
   (interactive "p")
   (--dotimes count (tabulated-list-put-tag "" t)))
 
+(defun tle-toggle-mark ()
+  "Toggle mark for current row."
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (if (tle-selected-p)
+        (tle-unmark 1)
+      (tle-mark 1))))
+
 (defun tle-toggle-marks ()
-  "Toggle marks."
+  "Toggle all marks."
   (interactive)
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (let ((cmd (char-after)))
-        (tabulated-list-put-tag (if (eq cmd ?*) "" "*") t)))))
+      (tle-toggle-mark)
+      (forward-line))))
 
 (defun tle-unmark-all ()
   "Unmark all."
@@ -57,7 +80,15 @@
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (tabulated-list-put-tag "" t))))
+      (tle-unmark 1))))
+
+(defun tle-mark-all ()
+  "Mark all."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (not (eobp))
+      (tle-mark 1))))
 
 (defvar tle-mode-map
   (let ((map (make-sparse-keymap)))

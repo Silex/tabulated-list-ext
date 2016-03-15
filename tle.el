@@ -31,25 +31,26 @@
 ;;; Code:
 
 (require 'dash)
+(require 'dired)
 
 (defgroup tle nil
   "Tabulated list extensions."
   :group 'tabulated-list
   :group 'convenience)
 
-(defcustom tle-tag "*"
-  "Default character used for marking."
+(defcustom tle-marker-string (string dired-marker-char)
+  "Default string used for marking."
   :group 'tle
   :type 'string)
 
 (defun tle-selected-p ()
   "Return true if the current row is selected."
-  (string-equal tle-tag (buffer-substring (point) (+ (point) (string-width tle-tag)))))
+  (string-equal tle-marker-string (buffer-substring (point) (+ (point) (string-width tle-marker-string)))))
 
 (defun tle-mark (&optional count)
   "Mark the next COUNT lines (default 1)."
   (interactive "p")
-  (--dotimes count (tabulated-list-put-tag tle-tag t)))
+  (--dotimes count (tabulated-list-put-tag tle-marker-string t)))
 
 (defun tle-mark-all ()
   "Mark all."

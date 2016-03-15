@@ -1,4 +1,4 @@
-;;; tabulated-list-extensions.el --- Extensions to tabulated-list-mode
+;;; tle.el --- Tabulated List Extensions
 
 ;; Author: Philippe Vaucher <philippe.vaucher@gmail.com>
 ;; URL: https://github.com/Silex/tabulated-list-extensions
@@ -32,14 +32,14 @@
 
 (require 'dash)
 
-(defgroup tabulated-list-extensions nil
+(defgroup tle nil
   "Tabulated list extensions."
   :group 'tabulated-list
   :group 'convenience)
 
 (defcustom tle-tag "*"
   "Default character used for marking."
-  :group 'tabulated-list-extensions
+  :group 'tle
   :type 'string)
 
 (defun tle-selected-p ()
@@ -130,6 +130,6 @@ the mode if ARG is omitted or nil."
   " tle"
   tle-mode-map)
 
-(provide 'tabulated-list-extensions)
+(provide 'tle)
 
-;;; tabulated-list-extensions.el ends here
+;;; tle.el ends here

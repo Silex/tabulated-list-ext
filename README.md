@@ -9,7 +9,7 @@ It provides helpers to mark or unmark items in the list and work on the selectio
 
 The recommended way to install tabulated-list-extensions is through [MELPA](https://github.com/milkypostman/melpa).
 
-Otherwise, simply add the files to your load-path and then `(require 'tabulated-list-extensions)`.
+Otherwise, simply add the files to your load-path and then `(require 'tle)`.
 
 ## Customization
 

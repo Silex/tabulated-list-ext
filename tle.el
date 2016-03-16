@@ -45,7 +45,9 @@
 
 (defun tle-selected-p ()
   "Return true if the current row is selected."
-  (string-equal tle-marker-string (buffer-substring (point) (+ (point) (string-width tle-marker-string)))))
+  (save-excursion
+    (beginning-of-line)
+    (string-equal tle-marker-string (buffer-substring (point) (+ (point) (string-width tle-marker-string))))))
 
 (defun tle-mark (&optional count)
   "Mark the next COUNT lines (default 1)."
@@ -77,7 +79,6 @@
   "Toggle mark for current row."
   (interactive)
   (save-excursion
-    (beginning-of-line)
     (if (tle-selected-p)
         (tle-unmark 1)
       (tle-mark 1))))

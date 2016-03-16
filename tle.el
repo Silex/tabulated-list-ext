@@ -88,7 +88,7 @@
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (tle-toggle-mark)
+      (tle-toggle)
       (forward-line))))
 
 (defun tle-selection-ids ()
@@ -117,7 +117,7 @@
   (let ((map (make-sparse-keymap)))
     (define-key map "m" 'tle-mark)
     (define-key map "u" 'tle-unmark)
-    (define-key map "t" 'tle-toggle-marks)
+    (define-key map "t" 'tle-toggle-all)
     (define-key map "U" 'tle-unmark-all)
     map)
   "Keymap for `tle-mode'.")

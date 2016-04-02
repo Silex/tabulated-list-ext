@@ -36,6 +36,7 @@ You don't have to enable this mode to use the functions, it's just a mode that u
 | command               | description                                           |
 |-----------------------|-------------------------------------------------------|
 | tle-selected-p        | Returns true if the current row is selected.          |
+| tle-selection-empty-p | Returns true if there is nothing selected.            |
 | tle-selection-ids     | Get the marked items `tabulated-list-get-id` data.    |
 | tle-selection-entries | Get the marked items `tabulated-list-get-entry` data. |
 

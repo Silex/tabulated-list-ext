@@ -114,6 +114,11 @@
         (forward-line))
       selection)))
 
+(defun tle-selection-empty-p ()
+  "Return t if the selection is empty."
+  (save-excursion
+    (null (tle-selection-ids))))
+
 (defvar tle-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "m" 'tle-mark)

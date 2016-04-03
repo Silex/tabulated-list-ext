@@ -146,7 +146,7 @@ the mode if ARG is omitted or nil."
   nil
   " tle"
   tle-mode-map
-  (font-lock-add-keywords nil `((,(format "^%s.*" tle-marker-string) . 'tle-marked))))
+  (font-lock-add-keywords nil `((,(format "^[%s].*" tle-marker-string) 0 'tle-marked prepend))))
 
 (provide 'tle)
 

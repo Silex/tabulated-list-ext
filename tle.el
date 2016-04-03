@@ -62,6 +62,8 @@
 (defun tle-mark (&optional count)
   "Mark the next COUNT lines (default 1)."
   (interactive "p")
+  (when (null count)
+    (setq count 1))
   (--dotimes count (tabulated-list-put-tag tle-marker-string t)))
 
 (defun tle-mark-all ()
@@ -75,6 +77,8 @@
 (defun tle-unmark (&optional count)
   "Unmark the next COUNT lines (default 1)."
   (interactive "p")
+  (when (null count)
+    (setq count 1))
   (--dotimes count (tabulated-list-put-tag "" t)))
 
 (defun tle-unmark-all ()

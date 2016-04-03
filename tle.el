@@ -3,7 +3,7 @@
 ;; Author: Philippe Vaucher <philippe.vaucher@gmail.com>
 ;; URL: https://github.com/Silex/tabulated-list-extensions
 ;; Keywords: tabulated-list, extension
-;; Version: 0.1.0
+;; Version: 0.2.0
 ;; Package-Requires: ((dash "1.5.0"))
 
 ;; This file is NOT part of GNU Emacs.

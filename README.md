@@ -13,7 +13,11 @@ Otherwise, simply add the files to your load-path and then `(require 'tle)`.
 
 ## Customization
 
-The variable `tle-tag` contains the string used to display selection (default `*`).
+The variable `tle-tag` contains the string used to show selected items (default `*`).
+
+The face `tle-marked` is the face used for marked rows.
+
+Customize them with `M-x customize-group tle` or `M-x customize-group tle-faces`.
 
 ## Commands
 

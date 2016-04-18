@@ -133,6 +133,25 @@
   (save-excursion
     (null (tle-selection-ids))))
 
+(defun tle-resize-column (index width)
+  "Resize the column with INDEX to WIDTH."
+  (interactive "ncolumn: \nnwidth: \n")
+  (setq tabulated-list-format (apply 'vector (--update-at index (--update-at 1 width it) (-map 'identity tabulated-list-format))))
+  (tabulated-list-init-header)
+  (tabulated-list-revert))
+
+(defun tle-auto-resize-column (index)
+  "Make column INDEX width fit its contents."
+  (interactive "ncolumn: ")
+  (let* ((title-size (length (car (aref tabulated-list-format index))))
+         (entries-sizes (--map (length (aref (cadr it) index)) tabulated-list-entries)))
+    (tle-resize-column index (max title-size (apply 'max entries-sizes)))))
+
+(defun tle-auto-resize-all-columns ()
+  "Make all columns width fit their contents."
+  (interactive)
+  (-dotimes (length tabulated-list-format) 'tle-auto-resize-column))
+
 (defvar tle-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "m" 'tle-mark)

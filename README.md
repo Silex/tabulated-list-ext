@@ -1,5 +1,7 @@
 # Tabulated List Extensions
 
+**THIS PACKAGE IS DEPRECATED IN FAVOR OF https://github.com/politza/tablist**
+
 ## Introduction
 
 This package provides useful utilities for packages using `tabulated-list-mode`.
